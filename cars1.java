@@ -1,0 +1,44 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class cars1 here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class cars1 extends Actor
+{
+    /**
+     * Act - do whatever the cars1 wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        moveForward();
+        turnRandom();
+    }
+    public void moveForward()
+    {
+        double angle = Math.toRadians(getRotation() );
+        int x = (int) Math.round(getX() + Math.cos(angle) * 5.0);
+        int y = (int) Math.round(getY() + Math.sin(angle) * 5.0);
+        
+        setLocation(x, y);
+    }
+    public void turnRandom()
+    {
+        if (Greenfoot.getRandomNumber(100) < 10)
+        {
+            turn(Greenfoot.getRandomNumber(90) - 45);
+            System.out.println(Greenfoot.getRandomNumber(100));
+        }
+        if (getX() <= 5 || getX() >= getWorld().getWidth() - 5)
+        {
+            turn(180);
+        }
+        if (getY() <= 5 || getY() >= getWorld().getHeight() - 5)
+        {
+            turn(180);
+        }
+    }
+}
